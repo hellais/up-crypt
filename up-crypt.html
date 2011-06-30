@@ -1,0 +1,62 @@
+<html>
+<!DOCTYPE html>
+<head>
+  <title>Encrypted File upload</title>
+  <style>
+    body { background-color: #EEE;font-family: Georgia, Times, 'Times New Roman', serif;color: #333;}
+   
+    #encrypt { min-width: 500px;border: 1px solid black;min-height: 100px;clip: auto;overflow: scroll;word-wrap: break-word;}
+
+    #raw { min-width: 500px;border: 1px solid black;min-height: 100px;clip: auto;word-wrap: break-word;overflow: scroll; }
+    
+    ul#form li { list-style: none;height: 30px; }
+   
+    textarea { font-family: "Andale Mono", monospace;display: block;}
+
+    #intro { width: 500px;position: relative;}
+    
+    #status { color: red;}
+    
+    a.fileel { color: red;}
+    
+    a.downloaded { color: green; }
+  </style>
+
+  </head>
+  <body>
+  <div id="intro">
+  <h2>Client side encypted file upload with HTML 5</h2>
+  <p>
+  This is a demonstration of how to do client side encryption for file upload forms. Here you will see the file encrypted and in base64 form, while underneath is the same file decypted with the provided password.
+  </p>
+  <p>
+  Using XMLHttpRequest a mutipart file upload is emulated, so that the result of the form post can be retrieved in PHP via the $_FILES variable.
+  The uploaded file is retrieved by the upload.php server side script.
+  </p>
+  </div>
+  Encryption password:
+  <input type="text" id="password"/><br/>
+  <form id="upload" action="">
+    <ul id="form">
+    <!-- li><span>Filename:</span><input name="filename" type="text" id="filename"/></li -->
+    <li><input name="files[]" type="file" id="files"/></li>
+    <li><input type="submit" name="send" id="send"/></li>
+    </ul>
+  </form>
+  <div id="status"></div>
+  <!-- textarea id="encrypt"></textarea>
+  <textarea id="raw"></textarea-->
+  
+  <h3>Currently saved files</h3>
+  <p>to download first click on the link to pull from server, then click again to locally store</p>
+  Decryption key:
+  <input type="text" id="decryptkey"/><br/>
+  <div id="stored">
+  </div>
+  <script type="text/javascript" src="./crypto-sha1-hmac-pbkdf2-ofb-aes.js"></script>
+  <script type="text/javascript" src="http://leemon.com/crypto/BigInt.js"></script>
+  <script type="text/javascript" src="up-crypt.js"></script>
+</body>
+
+
+</html>
